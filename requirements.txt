@@ -1,0 +1,37 @@
+# Core data science
+numpy
+pandas
+scipy
+scikit-learn
+
+# Deep learning
+tensorflow
+
+# Time-series utilities
+statsmodels
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# Jupyter
+jupyter
+ipykernel
+
+# Serial communication (for sensor logging)
+pyserial
+
+# IoT
+paho-mqtt
+
+# Dashboard
+streamlit
+streamlit-autorefresh
+
+# Utilities
+tqdm
+python-dotenv
+opencv-python
+pillow
+opendatasets

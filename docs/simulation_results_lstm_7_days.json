@@ -1,0 +1,48 @@
+{
+  "experiment": "irrigation_policy_comparison_simulation",
+  "steps": 10080,
+  "simulated_hours": 168.0,
+  "simulation_csv": "bhopal_agritech_dry_v2.csv",
+  "policy_threshold": 0.3,
+  "used_trained_lstm": true,
+  "summaries": {
+    "D": {
+      "policy": "D",
+      "steps": 20160,
+      "water_events": 0,
+      "total_water_ml": 0.0,
+      "avg_soil": 0.2929955224170175,
+      "min_soil": 8.964206627341126e-05
+    },
+    "A": {
+      "policy": "A",
+      "steps": 20160,
+      "water_events": 44,
+      "total_water_ml": 1100.0,
+      "avg_soil": 0.4492514565190451,
+      "min_soil": 0.27197911483059706
+    },
+    "B": {
+      "policy": "B",
+      "steps": 20160,
+      "water_events": 54,
+      "total_water_ml": 2700.0,
+      "avg_soil": 0.668069393768308,
+      "min_soil": 0.13816327031518016
+    },
+    "C": {
+      "policy": "C",
+      "steps": 20160,
+      "water_events": 32,
+      "total_water_ml": 640.0,
+      "avg_soil": 0.3836417077851084,
+      "min_soil": 0.20697768925587617
+    }
+  },
+  "savings_vs_A_pct": {
+    "A": 0.0,
+    "B": -145.45454545454547,
+    "C": 41.81818181818181,
+    "D": 100.0
+  }
+}
