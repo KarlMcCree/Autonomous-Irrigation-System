@@ -45,15 +45,15 @@ systems.
 1. **Scheduled irrigation is dominated by threshold irrigation.** Policy B
    used 28.6% more water than Policy A while achieving the lowest minimum soil
    moisture (0.15 vs 0.269). Timer-based irrigation wastes water AND stresses
-   the plant — simultaneously.
+   the plant simultaneously.
 
 2. **Predictive control matches or beats the industry baseline.** Policy C
    uses less water than Policy A while maintaining comparable soil health.
    Savings are modest (8.6%) in this dataset but consistent across multiple
    simulator calibrations.
 
-3. **No irrigation leads to plant death.** Policy D's soil drops to 0.113 —
-   62% below the stress threshold — confirming irrigation intervention is
+3. **No irrigation leads to plant death.** Policy D's soil drops to 0.113 
+   62% below the stress threshold confirming irrigation intervention is
    necessary.
 
 4. **A TinyML LSTM can run the decision loop.** 4.11% MAE is sufficient for
@@ -112,7 +112,7 @@ The entire system works identically in **simulation** and on **real hardware**,
 controlled by one config line:
 
 ```python
-# src/config.py
+
 HARDWARE_MODE = "simulated"   # or "real"
 
 HAL	

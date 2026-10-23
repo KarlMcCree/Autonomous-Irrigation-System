@@ -1,14 +1,14 @@
 
 ---
 
-##  PART 2: TECHNICAL REPORT TEMPLATE
+##  TECHNICAL REPORT TEMPLATE
 
 Save this as `docs/REPORT.md`. Fill in the placeholders marked `<...>` and paste in the numbers from your FINAL_results_v2.json.
 
 ```markdown
 # Autonomous Irrigation System with Edge AI
 
-**Author:** <Your Name>
+**Author:** <Your Afolabi Temidayo>
 **Date:** October 2026
 **Project:** 3 of 4 in an Edge-AI portfolio for EDISS application
 
