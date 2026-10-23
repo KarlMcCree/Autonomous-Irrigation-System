@@ -99,7 +99,7 @@ even 10% of irrigation water is a meaningful contribution.
 
 <p align="center">
   <img 
-    src="docs/docs/System_Architecture.jpeg" 
+    src="docs/System_Architecture.jpeg" 
     alt="Irrigation System Architecture"
     width="850"
   >
@@ -133,19 +133,17 @@ tracked by the HAL, independent of wall time.
 Bug 2: No water-balance feedback
 The first simulator read soil from the CSV but ignored irrigation events. When
 a policy watered, soil moisture didn't respond. All four policies produced
-identical results. Fix: implemented a water-balance model:
-
-soil(t) = soil_csv(t) + Σ_i ml_i × 0.004 × exp(-(t-t_i)/6h) − evaporation(t)
+identical results.
 
 Bug 3: CSV contained embedded irrigation
 The Bhopal-AgriTech source dataset was recorded in a real greenhouse with
-active irrigation. Its soil column contained 3,219 sharp upward jumps — free
+active irrigation. Its soil column contained 3,219 sharp upward jumps ,free
 water for the policies. Even Policy D (no irrigation) looked healthy.
 Fix: rolling-window detector removes 90% of these jumps, producing a
 "dry baseline" CSV where policies are the only source of water.
 
 Bug 4: Policy C feedback loop
-Initial Policy C watered every time predicted soil dipped below threshold —
+Initial Policy C watered every time predicted soil dipped below threshold, 
 including when current soil was already wet (0.40+). This created a
 water-chasing loop that used more water than the baseline. Fix: added
 two guards:
@@ -156,8 +154,7 @@ this level (plenty of buffer)
 MIN_INTERVAL_BETWEEN_ML = 90 — minimum 90 minutes between waterings
 
 
-Each fix uncovered the next problem. This is standard simulation engineering,
-and it's documented here for methodological transparency.
+For each fix uncovered the next problem which was documented here for methodological transparency.
 
 ## Project Structure
 
@@ -170,22 +167,22 @@ irrigation-edge-ai/
 │
 ├── src/                          # Reusable Python modules
 │   ├── __init__.py
-│   ├── config.py                 # All paths & hyperparameters
-│   ├── hal.py                    # Simulated + Real HALs
-│   ├── controller.py             # 4 irrigation policies
-│   ├── predict.py                # LSTM + vision inference
-│   └── train_soil.py             # LSTM training pipeline
+│   ├── config.py                 
+│   ├── hal.py                    
+│   ├── controller.py             
+│   ├── predict.py                
+│   └── train_soil.py             
 │
-├── notebooks/                    # Experimentation
+├── notebooks/                    
 │   └── 01_simulation_experiment.ipynb
 │
-├── python/                       # Runtime scripts
-│   ├── prepare_dry_baseline.py   # Irrigation-removal preprocessing
+├── python/                       
+│   ├── prepare_dry_baseline.py   
 │   └── mqtt_logger.py
 │
 ├── firmware/
 │   └── field_node/
-│       └── field_node.ino        # ESP32 sensor + pump control
+│       └── field_node.ino        
 │
 ├── ml/                           # Models (gitignored)
 │   ├── soil_predictor.keras
@@ -195,7 +192,7 @@ irrigation-edge-ai/
 │   ├── raw/
 │   └── processed/
 │
-└── docs/                         # Plots and results
+└── docs/                         
     ├── soil_training_history.png
     ├── soil_prediction_quality.png
     ├── simulation_policy_comparison.png
@@ -207,24 +204,34 @@ irrigation-edge-ai/
 ## Results
 
 LSTM Training
-https://docs/soil_training_history.png
+
+![Soil Training](docs/soil_training_history.png)
+
+
 
 Training converged by epoch 13 (EarlyStopping). Final MAE = 4.11%.
 
 Prediction Quality
-https://docs/soil_prediction_quality.png
+
+![Prediction Quality](docs/soil_prediction_quality.png)
+
 
 Actual vs predicted soil moisture on the test set — the model tracks the
 drying trend closely with no systematic bias.
 
-Policy Comparison
-https://docs/simulation_policy_comparison.png
+Policy Comparison for 7 days
+
+![Policy Comparison for 7 days](docs/simulation_policy_comparison_lstm_7_days.png)
+
+
 
 Policy C uses the least water of the three active policies while maintaining
 soil near the stress threshold.
 
-Soil Moisture Over Time
-https://docs/simulation_soil_timeline.png
+Soil Moisture Over Time for 7 days
+
+![Soil Moisture Over Time for 7 days](docs/simulation_policy_comparison_lstm_7_days.png)
+
 
 Four distinct curves confirm the policies produce genuinely different
 behaviors.
@@ -260,8 +267,6 @@ statistical power.
 Reinforcement learning. Replace rule-based policy with RL trained on
 historical data.
 
-7-day simulations. Amplify water-savings differences for a stronger
-claim.
 
 ## References
 Kamienski, C., et al. (2019). Smart Water Management Platform: IoT-Based
