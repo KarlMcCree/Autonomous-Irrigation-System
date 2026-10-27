@@ -18,7 +18,7 @@ In the 24-hour run, the predictive policy saved **20.0%** water compared to the 
 
 ## 1. Introduction
 
-Agriculture consumes approximately 70% of global freshwater. Most of this water is used inefficiently — delivered on fixed schedules that ignore actual soil and plant conditions. In Nigeria specifically, 14.5 million smallholder farmers produce ~90% of the nation's food, yet only 5% of irrigable land is actively irrigated, and 57.4% of rural households lack reliable access to water.
+Agriculture consumes approximately 70% of global freshwater. Most of this water is used inefficiently, delivered on fixed schedules that ignore actual soil and plant conditions. In Nigeria specifically, 14.5 million smallholder farmers produce ~90% of the nation's food, yet only 5% of irrigable land is actively irrigated, and 57.4% of rural households lack reliable access to water.
 
 Precision irrigation promises to reduce this waste by delivering water only when needed. Published systems achieve 15-40% water savings compared to conventional approaches. However, most such systems rely on cloud connectivity, which is unreliable in rural deployment scenarios.
 
@@ -83,7 +83,7 @@ The Bhopal-AgriTech Hybrid IoT Dataset (Kaggle) was used as the soil/environment
 
 ### 3.2 Data Preprocessing
 
-**Problem:** The source CSV was collected in a greenhouse where irrigation was actively occurring. Its soil moisture signal contains sharp upward jumps corresponding to those events. If used directly, the policies have no effect — the CSV "waters" the plant for them.
+**Problem:** The source CSV was collected in a greenhouse where irrigation was actively occurring. Its soil moisture signal contains sharp upward jumps corresponding to those events. If used directly, the policies have no effect, the CSV "waters" the plant for them.
 
 **Solution:** A rolling-window detector identifies and removes irrigation events:
 
@@ -126,7 +126,7 @@ The model was trained on the 7-day dataset to capture long-term drying dynamics.
 - **Test MAE:** 0.041074 (4.11% moisture)
 - **Best Epoch:** 13 (Early Stopping)
 
-The MAE indicates that on average, 60-minute-ahead soil moisture predictions land within ±4.11 percentage points of ground truth — comparable to published precision-irrigation literature.
+The MAE indicates that on average, 60-minute-ahead soil moisture predictions land within ±4.11 percentage points of ground truth comparable to published precision-irrigation literature.
 
 ---
 
@@ -161,7 +161,7 @@ This is the final, comprehensive evaluation.
 *Figure 4: Soil moisture curves over 7 days for all four policies.*
 
 
-**Observation:** Over 7 days, the predictive policy's advantage compounds dramatically. It saves **41.8%** more water than the threshold baseline — well within the 15-40% range reported in published precision-irrigation literature. Policy B's inefficiency is also magnified: it uses **145.5% more water** while keeping the soil at an artificially high average moisture (0.668) that stresses the plant (min soil 0.138).
+**Observation:** Over 7 days, the predictive policy's advantage compounds dramatically. It saves **41.8%** more water than the threshold baseline,  well within the 15-40% range reported in published precision-irrigation literature. Policy B's inefficiency is also magnified: it uses **145.5% more water** while keeping the soil at an artificially high average moisture (0.668) that stresses the plant (min soil 0.138).
 
 ---
 
@@ -200,7 +200,7 @@ Each iteration uncovered a subtle physical or logical inconsistency. This is a s
 2. **Residual CSV artifacts.** ~333 undetected irrigation events remain, treated as noise.
 3. **No vision integration in reported results.** The plant classifier was optional and disabled; vision-enhanced decisions are left for future work.
 4. **Single plant type.** Calibrated for tomato/potato-style plants only.
-5. **Policy C's minimum soil (0.207) is below the 0.30 stress threshold for a portion of the simulation.** This is a known trade-off — the policy favors water savings over maintaining a large safety buffer.
+5. **Policy C's minimum soil (0.207) is below the 0.30 stress threshold for a portion of the simulation.** This is a known trade-off,  the policy favors water savings over maintaining a large safety buffer.
 
 ---
 
