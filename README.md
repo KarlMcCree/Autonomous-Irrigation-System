@@ -35,6 +35,10 @@ The model predicts soil moisture 60 minutes into the future with an average
 error of ±4.11 percentage points ,comparable to published precision-irrigation
 systems.
 
+For More Findings check the Report File 
+
+![Report File ](docs/Report.md)
+
 ### Irrigation Policy Comparison (24-hour simulation)
 
 ![Irrigation Policy](docs/Irrigation_Policy_Comparison.jpeg)
@@ -165,7 +169,7 @@ irrigation-edge-ai/
 ├── .gitignore
 ├── LICENSE
 │
-├── src/                          # Reusable Python modules
+├── src/                          
 │   ├── __init__.py
 │   ├── config.py                 
 │   ├── hal.py                    
@@ -184,11 +188,11 @@ irrigation-edge-ai/
 │   └── field_node/
 │       └── field_node.ino        
 │
-├── ml/                           # Models (gitignored)
+├── ml/                           
 │   ├── soil_predictor.keras
 │   └── soil_meta.json
 │
-├── data/                         # Datasets (gitignored)
+├── data/                         
 │   ├── raw/
 │   └── processed/
 │
@@ -219,18 +223,18 @@ Prediction Quality
 Actual vs predicted soil moisture on the test set — the model tracks the
 drying trend closely with no systematic bias.
 
-Policy Comparison for 7 days
+Policy Comparison
 
-![Policy Comparison for 7 days](docs/simulation_policy_comparison_lstm_7_days.png)
+![Policy Comparison ](docs/simulation_policy_comparison_lstm.png)
 
 
 
 Policy C uses the least water of the three active policies while maintaining
 soil near the stress threshold.
 
-Soil Moisture Over Time for 7 days
+Soil Moisture Over Time
 
-![Soil Moisture Over Time for 7 days](docs/simulation_policy_comparison_lstm_7_days.png)
+![Soil Moisture Over Time ](docs/simulation_policy_comparison_lstm.png)
 
 
 Four distinct curves confirm the policies produce genuinely different
